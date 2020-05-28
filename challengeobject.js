@@ -60,6 +60,20 @@ class Walk {
     this.distance = distance;
   }
 }
+document.getElementById("submit").addEventListener("click", myFunction);
+
+function myFunction() {
+  console.log("here");
+  let location = document.getElementById("DogFormloc").value;
+  console.log(location);
+  let distance = parseFloat(document.getElementById("DogFormnum").value);
+  document.getElementById("location").innerHTML = location;
+  document.getElementById("dist").innerHTML = distance;
+
+  let walk = new Walk(location, distance);
+  dog.walk(walk.location, walk.distance);
+  console.log(dog.walks);
+}
 
 let dog = new Dog("nike", "hk");
 let walk = new Walk("peak", 30);
@@ -70,3 +84,7 @@ dog.walk(walk.location, walk.distance);
 dog.walk("peak2", 304);
 console.log(dog);
 console.log(dog.walks);
+dog.walks.forEach((e) => console.log(e.location));
+document.getElementById(
+  "walktable"
+).innerHTML = `<td>${dog.walks[0].location}</td><td>${dog.walks[0].distance}</td>`;
